@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Repository } from 'src/core/domain/repositories/repository';
+import { Repository } from '../../../core/domain/repositories/repository';
 import { PaymentMongooseDatabase } from './payment-mongoose-database';
 
 export class MongooseDatabase implements Repository {

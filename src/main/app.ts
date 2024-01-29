@@ -5,6 +5,7 @@ import swagger from 'swagger-ui-express';
 import openapi from './documentation/openapi.json';
 import { Repository } from '../core/domain/repositories/repository';
 import { paymentRoutes } from './routes/payment-routes';
+import { mercadoPagoRoutes } from './routes/mercado-pago-routes';
 
 export class App {
   private constructor(private readonly app: express.Express) {}
@@ -15,6 +16,7 @@ export class App {
     app.use(express.urlencoded({ extended: true }));
     const router = Router();
     paymentRoutes(router, repository);
+    mercadoPagoRoutes(router, repository);
 
     router.get('/health', (_, res) =>
       res.status(200).json({

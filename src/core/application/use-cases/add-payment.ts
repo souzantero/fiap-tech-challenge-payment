@@ -1,4 +1,4 @@
-import { CreateOnePaymentRepository } from 'src/core/domain/repositories/payment-repository';
+import { CreateOnePaymentRepository } from '../../domain/repositories/payment-repository';
 import { Payment } from '../../domain/entities/payment';
 
 export class AddPayment {
@@ -7,11 +7,14 @@ export class AddPayment {
   ) {}
 
   async addOne(data: AddOnePaymentData): Promise<Payment> {
-    return await this.createOnePaymentRepository.createOne(data);
+    return await this.createOnePaymentRepository.createOne({
+      ...data,
+      status: 'pending',
+    });
   }
 }
 
 export type AddOnePaymentData = Omit<
   Payment,
-  'id' | 'createdAt' | 'updatedAt' | 'deletedAt'
+  'id' | 'createdAt' | 'updatedAt' | 'deletedAt' | 'status'
 >;

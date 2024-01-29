@@ -5,4 +5,5 @@ export type Payment = {
   deletedAt: Date | null;
 
   orderId: string;
+  status: string;
 };

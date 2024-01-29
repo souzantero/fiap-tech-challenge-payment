@@ -1,4 +1,4 @@
-import { PaymentRepository } from 'src/core/domain/repositories/payment-repository';
+import { PaymentRepository } from '../../../core/domain/repositories/payment-repository';
 import { AddPayment } from './add-payment';
 
 const randomString = (length = 10) =>
@@ -17,7 +17,10 @@ describe('AddPayment', () => {
           createdAt: now,
           updatedAt: now,
           deletedAt: null,
+          status: 'pending',
         }),
+      findOneById: () => Promise.resolve(undefined),
+      updateOneById: () => Promise.resolve({} as any),
     };
     const addPayment = new AddPayment(paymentRepository);
     const data = {
