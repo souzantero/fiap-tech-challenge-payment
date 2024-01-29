@@ -1,0 +1,130 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FIAP Tech Challenge Pagamento",
+    "description": "API do serviço de pagamento para o desafio técnico da FIAP",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Felipe Antero",
+      "email": "souzantero@gmail.com",
+      "url": "https://linkedin.com/in/souzantero"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "Servidor de desenvolvimento"
+    }
+  ],
+  "paths": {
+    "/payments": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "Cria um novo pagamento",
+        "operationId": "createPayment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pagamento criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Requisição inválida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Mensagem de erro",
+            "example": "Erro ao executar a operação"
+          }
+        }
+      },
+      "Payment": {
+        "type": "object",
+        "required": [
+          "orderId"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identificador único do pagamento"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Data de criação do pagamento"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Data de atualização do pagamento"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Data de exclusão do pagamento"
+          },
+          "orderId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Identificador único do pedido"
+          }
+        }
+      },
+      "PaymentInput": {
+        "type": "object",
+        "required": [
+          "orderId"
+        ],
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Identificador único do pedido"
+          }
+        }
+      }
+    }
+  }
+}
