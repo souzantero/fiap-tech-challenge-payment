@@ -1,4 +1,7 @@
-import { PaymentNotFoundError, UpdatePaymentStatus } from '../../../core/application/use-cases';
+import {
+  PaymentNotFoundError,
+  UpdatePaymentStatus,
+} from '../../../core/application/use-cases';
 import {
   BadRequestError,
   HttpController,
@@ -8,7 +11,7 @@ import {
 } from './http-controller';
 
 export class MercadoPagoWebhookHttpController implements HttpController<void> {
-  constructor(private readonly updatePaymentStatus: UpdatePaymentStatus) { }
+  constructor(private readonly updatePaymentStatus: UpdatePaymentStatus) {}
 
   async handle(request: HttpRequest): Promise<HttpResponse<void>> {
     const { id } = request.params;
@@ -25,7 +28,7 @@ export class MercadoPagoWebhookHttpController implements HttpController<void> {
       if (error instanceof PaymentNotFoundError) {
         throw new NotFoundError(error.message);
       }
-      
+
       throw error;
     }
   }

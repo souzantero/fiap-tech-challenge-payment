@@ -7,6 +7,11 @@ import {
 } from '../../../core/domain/repositories/payment-repository';
 
 const PaymentSchema = new mongoose.Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
+    auto: true,
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: () => new Date(),
@@ -42,10 +47,13 @@ export class PaymentMongooseDatabase implements PaymentRepository {
       deletedAt: payment.deletedAt,
       orderId: payment.orderId,
       status: payment.status,
-    }
+    };
   }
 
-  async updateOneById(id: string, data: UpdateOnePaymentData): Promise<Payment> {
+  async updateOneById(
+    id: string,
+    data: UpdateOnePaymentData,
+  ): Promise<Payment> {
     await PaymentModel.updateOne({ _id: id }, data);
     const payment = await this.findOneById(id);
     return payment!;
@@ -60,6 +68,6 @@ export class PaymentMongooseDatabase implements PaymentRepository {
       deletedAt: payment.deletedAt,
       orderId: payment.orderId,
       status: payment.status,
-    }
+    };
   }
 }

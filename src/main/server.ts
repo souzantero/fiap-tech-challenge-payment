@@ -1,9 +1,15 @@
+import mongoose from 'mongoose';
 import { App } from './app';
-import { MongooseDatabase } from './databases/mongoose/mongoose-database';
 import { environment } from './configuration/environment';
+import { PaymentMongooseDatabase } from './databases/mongoose/payment-mongoose-database';
+import { OrderFetchProvider } from './providers/order-fetch-provider';
 
-const mongooseDatabase = new MongooseDatabase(environment.databaseUrl);
-mongooseDatabase.connect().then(() => {
-  const app = App.create(mongooseDatabase);
+mongoose.connect(environment.databaseUrl).then(() => {
+  const repository = {
+    payment: new PaymentMongooseDatabase(),
+    order: new OrderFetchProvider(environment.orderUrl),
+  };
+
+  const app = App.create(repository);
   app.start(environment.port);
 });

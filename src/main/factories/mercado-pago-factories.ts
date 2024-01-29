@@ -8,7 +8,7 @@ export const makeMercadoPagoWebhookHttpController = (
 ) => {
   return new CatchErrorHttpControllerDecorator(
     new MercadoPagoWebhookHttpController(
-      new UpdatePaymentStatus(repository.payment),
+      new UpdatePaymentStatus(repository.payment, repository.order),
     ),
   );
 };
