@@ -34,7 +34,7 @@ const PaymentSchema = new mongoose.Schema({
   },
 });
 
-const PaymentModel = mongoose.model('Payment', PaymentSchema);
+export const PaymentModel = mongoose.model('Payment', PaymentSchema);
 
 export class PaymentMongooseDatabase implements PaymentRepository {
   async findOneById(id: string): Promise<Payment | undefined> {

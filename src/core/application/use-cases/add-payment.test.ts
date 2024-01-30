@@ -35,5 +35,6 @@ describe('AddPayment', () => {
     expect(payment).toHaveProperty('createdAt', now);
     expect(payment).toHaveProperty('updatedAt', now);
     expect(payment).toHaveProperty('deletedAt', null);
+    expect(payment).toHaveProperty('status', 'pending');
   });
 });
