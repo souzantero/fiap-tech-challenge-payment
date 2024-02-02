@@ -1,0 +1,23 @@
+service: fiap-tech-challenge-payment
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  region: us-west-2
+  runtime: nodejs20.x
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+    ORDER_URL: ${env:ORDER_URL}
+  tags:
+    PROJECT: fiap-tech-challenge
+
+functions:
+  app:
+    handler: dist/main/lambda.handler
+    events:
+      - httpApi:
+          method: 'ANY'
+          path: '/{proxy+}'
+  
+plugins:
+  - serverless-offline
