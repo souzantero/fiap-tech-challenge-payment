@@ -5,6 +5,7 @@ export interface Environment {
   readonly port: number;
   readonly databaseUrl: string;
   readonly orderUrl: string;
+  readonly orderAddedSQSQueueUrl: string;
 }
 
 if (process.env.NODE_ENV) {
@@ -30,4 +31,5 @@ export const environment: Environment = {
     process.env.DATABASE_URL ||
     'mongodb://root:mongopass@localhost:27017/paymentdb?authSource=admin',
   orderUrl: process.env.ORDER_URL || 'http://localhost:3001/api',
+  orderAddedSQSQueueUrl: process.env.AWS_SQS_ORDER_ADDED_QUEUE_URL || '',
 };

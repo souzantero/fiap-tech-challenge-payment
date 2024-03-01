@@ -18,6 +18,14 @@ functions:
       - httpApi:
           method: 'ANY'
           path: '/{proxy+}'
+  onOrderAdded:
+    handler: dist/main/lambda.onOrderAdded
+    events:
+      - sqs: 
+          arn: 
+            Fn::GetAtt:
+              - OrderAdded
+              - Arn
   
 plugins:
   - serverless-offline
