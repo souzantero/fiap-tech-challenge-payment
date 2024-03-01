@@ -21,18 +21,7 @@ functions:
   onOrderAdded:
     handler: dist/main/lambda.onOrderAdded
     events:
-      - sqs: 
-          arn: 
-            Fn::GetAtt:
-              - OrderAdded
-              - Arn
+      - sqs: ${env:AWS_SQS_ORDER_ADDED_QUEUE_ARN}
 
-resources:
-  Resources:
-    OrderAdded:
-      Type: "AWS::SQS::Queue"
-      Properties:
-        QueueName: "OrderAdded"
-  
 plugins:
   - serverless-offline
