@@ -26,6 +26,13 @@ functions:
             Fn::GetAtt:
               - OrderAdded
               - Arn
+
+resources:
+  Resources:
+    OrderAdded:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: "OrderAdded"
   
 plugins:
   - serverless-offline
