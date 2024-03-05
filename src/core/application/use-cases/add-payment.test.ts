@@ -1,3 +1,4 @@
+import { PaymentGateway } from 'src/core/domain/gateways';
 import { PaymentRepository } from '../../../core/domain/repositories/payment-repository';
 import { AddPayment } from './add-payment';
 
@@ -22,7 +23,10 @@ describe('AddPayment', () => {
       findOneById: () => Promise.resolve(undefined),
       updateOneById: () => Promise.resolve({} as any),
     };
-    const addPayment = new AddPayment(paymentRepository);
+    const paymentGateway: PaymentGateway = {
+      registerPayment: () => Promise.resolve(),
+    };
+    const addPayment = new AddPayment(paymentRepository, paymentGateway);
     const data = {
       orderId: randomString(),
     };
