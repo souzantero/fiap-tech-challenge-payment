@@ -10,6 +10,7 @@
     "build": "tsc -p tsconfig-build.json",
     "start": "NODE_ENV=production node dist/main/server.js",
     "start:dev": "NODE_ENV=development nodemon -L --watch ./src --exec ts-node ./src/main/server.ts",
+    "start:dev:pool": "NODE_ENV=development nodemon -L --watch ./src --exec ts-node ./src/main/pool.ts",
     "start:sls": "npm run build && sls offline start --stage development",
     "debug": "NODE_ENV=development nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
     "test:unit": "jest",
@@ -21,6 +22,7 @@
   "author": "Antero, Felipe <souzantero@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1571.0",
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "mongoose": "^8.1.1",
