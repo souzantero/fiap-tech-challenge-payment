@@ -5,6 +5,7 @@ export interface Environment {
   readonly port: number;
   readonly databaseUrl: string;
   readonly orderUrl: string;
+  readonly paymentGatewayCallbackUrl: string;
   readonly orderAddedSQSQueueUrl: string;
   readonly paymentApprovedSQSQueueUrl: string;
   readonly paymentRejectedSQSQueueUrl: string;
@@ -33,6 +34,8 @@ export const environment: Environment = {
     process.env.DATABASE_URL ??
     'mongodb://root:mongopass@localhost:27017/paymentdb?authSource=admin',
   orderUrl: process.env.ORDER_URL ?? 'http://localhost:3001/api',
+  paymentGatewayCallbackUrl:
+    process.env.PAYMENT_GATEWAY_CALLBACK_URL ?? 'http://localhost:3002/api',
   orderAddedSQSQueueUrl: process.env.AWS_SQS_ORDER_ADDED_QUEUE_URL ?? '',
   paymentApprovedSQSQueueUrl:
     process.env.AWS_SQS_PAYMENT_APPROVED_QUEUE_URL ?? '',

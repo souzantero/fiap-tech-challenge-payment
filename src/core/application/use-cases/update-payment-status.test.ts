@@ -12,13 +12,13 @@ describe('UpdatePaymentStatus', () => {
         updateOneById: (id: string, { status }: any) =>
           Promise.resolve({ id, status }),
       };
-      const orderRepository = {
-        payOrder: () => Promise.resolve(),
+      const paymentStatusUpdatedEvent = {
+        onStatusUpdated: () => Promise.resolve(),
       };
 
       const updatePaymentStatus = new UpdatePaymentStatus(
         paymentRepository as any,
-        orderRepository as any,
+        paymentStatusUpdatedEvent as any,
       );
 
       // Act
@@ -38,11 +38,11 @@ describe('UpdatePaymentStatus', () => {
       const paymentRepository = {
         findOneById: () => Promise.resolve(null),
       };
-      const orderRepository = {};
+      const paymentStatusUpdatedEvent = {};
 
       const updatePaymentStatus = new UpdatePaymentStatus(
         paymentRepository as any,
-        orderRepository as any,
+        paymentStatusUpdatedEvent as any,
       );
 
       // Act
