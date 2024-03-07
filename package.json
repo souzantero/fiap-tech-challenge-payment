@@ -10,7 +10,6 @@
     "build": "tsc -p tsconfig-build.json",
     "start": "NODE_ENV=production node dist/main/server.js",
     "start:dev": "NODE_ENV=development nodemon -L --watch ./src --exec ts-node ./src/main/server.ts",
-    "start:dev:pool": "NODE_ENV=development nodemon -L --watch ./src --exec ts-node ./src/main/pool.ts",
     "start:sls": "npm run build && sls offline start --stage development",
     "debug": "NODE_ENV=development nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
     "test:unit": "jest",

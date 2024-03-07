@@ -6,6 +6,7 @@ import { App } from './app';
 import { environment } from './configuration/environment';
 import { PaymentMongooseDatabase } from './databases/mongoose/payment-mongoose-database';
 import { OrderFetchProvider } from './providers/order-fetch-provider';
+import { pool } from './pool';
 
 mongoose.connect(environment.databaseUrl).then(() => {
   const repository = {
@@ -16,3 +17,5 @@ mongoose.connect(environment.databaseUrl).then(() => {
   const app = App.create(repository);
   app.start(environment.port);
 });
+
+pool();
