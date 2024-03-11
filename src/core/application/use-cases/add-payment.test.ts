@@ -1,4 +1,4 @@
-import { PaymentGateway } from 'src/core/domain/gateways';
+import { PaymentGateway } from '../../../core/domain/gateways';
 import { PaymentRepository } from '../../../core/domain/repositories/payment-repository';
 import { AddPayment } from './add-payment';
 

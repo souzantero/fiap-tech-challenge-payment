@@ -1,5 +1,5 @@
-import { Payment } from 'src/core/domain/entities/payment';
-import { PaymentGateway } from 'src/core/domain/gateways';
+import { Payment } from '../../core/domain/entities/payment';
+import { PaymentGateway } from '../../core/domain/gateways';
 import { environment } from '../configuration/environment';
 
 const getRandomBoolean = () => Math.random() < 0.5;

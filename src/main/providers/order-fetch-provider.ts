@@ -1,4 +1,4 @@
-import { OrderRepository } from 'src/core/domain/repositories/order-repository';
+import { OrderRepository } from '../../core/domain/repositories/order-repository';
 
 export class OrderFetchProvider implements OrderRepository {
   constructor(private readonly url: string) {}
