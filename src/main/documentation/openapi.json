@@ -197,7 +197,6 @@
           },
           "orderId": {
             "type": "string",
-            "format": "uuid",
             "description": "Identificador único do pedido"
           }
         }
@@ -210,7 +209,6 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "format": "uuid",
             "description": "Identificador único do pedido"
           }
         }
