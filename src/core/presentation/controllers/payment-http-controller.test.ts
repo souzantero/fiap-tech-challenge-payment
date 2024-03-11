@@ -1,4 +1,4 @@
-import { BadRequestError } from './http-controller';
+import { BadRequestError } from '../protocols/http';
 import { AddOnePaymentHttpController } from './payment-http-controller';
 
 describe('AddOnePaymentHttpController', () => {

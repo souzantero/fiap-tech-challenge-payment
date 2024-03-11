@@ -8,7 +8,7 @@ import {
   HttpRequest,
   HttpResponse,
   NotFoundError,
-} from './http-controller';
+} from '../protocols/http';
 
 export class MercadoPagoWebhookHttpController implements HttpController<void> {
   constructor(private readonly updatePaymentStatus: UpdatePaymentStatus) {}

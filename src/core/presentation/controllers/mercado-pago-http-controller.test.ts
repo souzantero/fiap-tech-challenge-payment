@@ -1,5 +1,5 @@
 import { PaymentNotFoundError } from '../../application/use-cases';
-import { BadRequestError } from './http-controller';
+import { BadRequestError } from '../protocols/http';
 import { MercadoPagoWebhookHttpController } from './mercado-pago-http-controller';
 
 describe('MercadoPagoWebhookHttpController', () => {
