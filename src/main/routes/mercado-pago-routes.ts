@@ -7,9 +7,7 @@ import { makeAuthorizationHttpMiddleware } from '../factories/middlewares/author
 export const mercadoPagoRoutes = (router: Router, repository: Repository) => {
   router.post(
     '/mercado-pago/hooks/payments/:id',
-    adaptMiddleware(makeAuthorizationHttpMiddleware(), {
-      accessTokenQuery: true,
-    }),
+    adaptMiddleware(makeAuthorizationHttpMiddleware()),
     adaptRoute(makeMercadoPagoWebhookHttpController(repository)),
   );
 };

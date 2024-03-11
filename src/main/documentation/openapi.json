@@ -24,6 +24,11 @@
         ],
         "summary": "Cria um novo pagamento",
         "operationId": "createPayment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -54,6 +59,16 @@
               }
             }
           },
+          "403": {
+            "description": "Acesso negado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Erro interno",
             "content": {
@@ -74,6 +89,11 @@
         ],
         "summary": "Webhook do Mercado Pago",
         "operationId": "mercadoPagoWebhook",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -121,6 +141,9 @@
           "400": {
             "description": "Requisição inválida"
           },
+          "403": {
+            "description": "Acesso negado"
+          },
           "500": {
             "description": "Erro interno"
           }
@@ -129,6 +152,13 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
     "schemas": {
       "Error": {
         "type": "object",
