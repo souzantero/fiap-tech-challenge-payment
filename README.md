@@ -33,10 +33,23 @@ Como iniciar o servidor em modo de desenvolvimento.
 Crie um arquivo `.env` na raiz do diretório e cole o seguinte conteúdo.
 
 ```
-DATABASE_URL=mongodb://root:mongopass@localhost:27017/paymentdb?authSource=admin
+PORT=_PORT_
+DATABASE_URL=_DATABASE_URL_
+AUTHORIZATION_URL=_AUTHORIZATION_URL_
+ORDER_URL=_ORDER_URL_
+PAYMENT_GATEWAY_CALLBACK_URL=_PAYMENT_GATEWAY_CALLBACK_URL_
+AWS_ACCESS_KEY_ID=_AWS_ACCESS_KEY_ID_
+AWS_SECRET_ACCESS_KEY=_AWS_SECRET_ACCESS_KEY_
+AWS_REGION=_AWS_REGION_
+AWS_SQS_ORDER_ADDED_QUEUE_URL=_AWS_SQS_ORDER_ADDED_QUEUE_URL_
+AWS_SQS_ORDER_ADDED_QUEUE_ARN=_AWS_SQS_ORDER_ADDED_QUEUE_ARN_
+AWS_SQS_PAYMENT_APPROVED_QUEUE_URL=_AWS_SQS_PAYMENT_APPROVED_QUEUE_URL_
+AWS_SQS_PAYMENT_REJECTED_QUEUE_URL=_AWS_SQS_PAYMENT_REJECTED_QUEUE_URL_
 ```
 
-Execute o serviço Docker Compose para iniciar o PostgreSQL.
+Não se esqueça de alterar os valores das variáveis de ambiente
+
+Execute o serviço Docker Compose para iniciar o Mongo.
 
 ```bash
 docker-compose up -d database
@@ -53,14 +66,6 @@ Para iniciar em modo de produção.
 ```bash
 npm run build
 npm run start
-```
-
-Como iniciar o servidor com o Docker Compose
-
-Execute o serviço Docker Compose para iniciar o servidor Node.js.
-
-```bash
-docker-compose up -d server
 ```
 
 ## Open API
